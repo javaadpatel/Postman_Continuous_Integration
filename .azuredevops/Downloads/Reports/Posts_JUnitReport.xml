@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite id="0" hostname="https://jsonplaceholder.typicode.com" package="" name="Get Posts" tests="1" failures="0" errors="0" timestamp="2021-05-04T22:44:44.253" time="0.568">
+    <properties>
+      <property name="BaseUrl" value="https://jsonplaceholder.typicode.com"/>
+      <property name="PostmanApiKey" value="PMAK-6090d0ef936c210046b06db2-a3ed1b4bb51f7877c440e83802a5a90247"/>
+    </properties>
+    <testcase classname=" / Get Posts" name="Status test" time="0.568"/>
+  </testsuite>
+</testsuites>

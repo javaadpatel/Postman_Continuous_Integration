@@ -1,0 +1,25 @@
+###
+# Azure DevOps pipeline to run Postman tests using Postman API and newman CLI
+###
+
+trigger:
+  branches:
+    include:
+      - dev
+  paths:
+    exclude:
+      - ".azuredevops/*"
+
+variables:
+  vmImageName: "windows-2019"
+  environment: "Dev"
+
+stages:
+  - stage: PostmanTests
+    displayName: Postman Tests
+    jobs:
+      - template: Templates/postman-template.yml
+        parameters:
+          environment: $(environment)
+          vmImageName: $(vmImageName)
+          postmanApiKey: $(postmanApiKey)

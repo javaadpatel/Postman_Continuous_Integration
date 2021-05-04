@@ -5,8 +5,8 @@ and executes the specified Postman collections using the Newman CLI
 
 param (
     [parameter(Mandatory = $true)] $PostmanAPIKey,
-    [parameter(Mandatory = $false)] $PostmanSettingsFilePath = "Configuration/dev.postman_settings.json",
-    [parameter(Mandatory = $false)] $DownloadDirectoryName = "Downloads"
+    [parameter(Mandatory = $false)] $PostmanSettingsFilePath = "../../Configuration/dev.postman_settings.json",
+    [parameter(Mandatory = $false)] $DownloadDirectoryName = "../../Downloads"
 )
 
 # Get the PowerShell version
