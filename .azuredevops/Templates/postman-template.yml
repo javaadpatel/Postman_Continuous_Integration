@@ -42,12 +42,12 @@ jobs:
           arguments: >
             -PostmanApiKey ${{parameters.postmanApiKey}}
             -PostmanSettingsFilePath "$(System.DefaultWorkingDirectory)/.azuredevops/Configuration/${{lower(parameters.environment)}}.postman_settings.json"
-            -DownloadDirectoryName "$(downloadDirectory)"
+            -DownloadDirectoryName "${{parameters.downloadDirectory}}"
 
       - task: PublishTestResults@2
         displayName: "Publish Postman Test Results"
         condition: succeededOrFailed()
         inputs:
           testResultsFormat: "JUnit"
-          testResultsFiles: "$(downloadDirectory)/Reports/*_JUnitReport.xml"
+          testResultsFiles: "${{parameters.downloadDirectory}}/Reports/*_JUnitReport.xml"
           testRunTitle: "Postman Tests"
