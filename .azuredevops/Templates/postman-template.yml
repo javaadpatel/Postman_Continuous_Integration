@@ -11,8 +11,10 @@ parameters:
     type: "string"
     displayName: "The Postman API Key to download the collections"
 
-variables:
-  downloadDirectory: "Downloads"
+  - name: "downloadDirectory"
+    type: "string"
+    displayName: "The directory to download the environment, collections and reports into"
+    default: "Downloads"
 
 jobs:
   - job: PostmanTests
