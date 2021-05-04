@@ -14,7 +14,7 @@ parameters:
   - name: "downloadDirectory"
     type: "string"
     displayName: "The directory to download the environment, collections and reports into"
-    default: "Downloads"
+    default: ".azuredevops"
 
 jobs:
   - job: PostmanTests
