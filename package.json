@@ -1,0 +1,23 @@
+{
+  "name": "postman_continuous_integration",
+  "version": "1.0.0",
+  "description": "Postman Continous Integration Testing Process",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javaadpatel/Postman_Continuous_Integration.git"
+  },
+  "author": "Javaad Patel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/javaadpatel/Postman_Continuous_Integration/issues"
+  },
+  "homepage": "https://github.com/javaadpatel/Postman_Continuous_Integration#readme",
+  "dependencies": {
+    "newman": "^5.2.3",
+    "newman-reporter-junitfull": "^1.1.1"
+  }
+}

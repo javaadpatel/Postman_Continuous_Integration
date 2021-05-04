@@ -1,0 +1,35 @@
+{
+  //remove the comments to make this valid JSON
+  "environment":
+    //environment required to run the specified collections
+    {
+      "name": "environment_name",
+      "UID": "environment_UID"
+    },
+  "collections": [
+    //each object specifies the collections to run and the environment to use for that collection, this allows you to chain collections that should
+    //run in sequence and ones that can run in parallel
+    {
+      "collections": [
+        {
+          //display name so you can easily tell which collection this is
+          "name": "collection1_name",
+          //unique UID for this collection
+          "UID": "collection1_UID"
+        },
+        {
+          "name": "collection2_name",
+          "UID": "collection2_UID"
+        }
+      ]
+    },
+    {
+      "collections": [
+        {
+          "name": "collection3_name",
+          "UID": "collection3_UID"
+        }
+      ]
+    }
+  ]
+}

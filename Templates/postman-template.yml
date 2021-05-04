@@ -1,0 +1,51 @@
+parameters:
+  - name: "environment"
+    type: "string"
+    displayName: "The name of the environment"
+
+  - name: "vmImageName"
+    type: "string"
+    displayName: "The vm image for the pipeline"
+
+  - name: "postmanApiKey"
+    type: "string"
+    displayName: "The Postman API Key to download the collections"
+
+variables:
+  downloadDirectory: "Downloads"
+
+jobs:
+  - job: PostmanTests
+    displayName: Postman Test for ${{parameters.environment}}
+    continueOnError: false
+    pool:
+      vmImage: ${{parameters.vmImageName}}
+    steps:
+      - task: Npm@1
+        displayName: "Install Newman CLI"
+        inputs:
+          command: "custom"
+          customCommand: "install newman -g"
+
+      - task: Npm@1
+        displayName: "Install Newman Reporter"
+        inputs:
+          command: "custom"
+          customCommand: "install newman-reporter-junitfull -g"
+
+      - task: PowerShell@2
+        displayName: Execute Postman Collections
+        inputs:
+          filePath: "./azuredevops/templates/scripts/newman-collection-runner.ps1"
+          arguments: >
+            -PostmanApiKey ${{parameters.postmanApiKey}}
+            -PostmanSettingsFilePath "$(System.DefaultWorkingDirectory)/Configuration/${{lower(parameters.environment)}}.postman_settings.json"
+            -DownloadDirectoryName "$(downloadDirectory)"
+
+      - task: PublishTestResults@2
+        displayName: "Publish Postman Test Results"
+        condition: succeededOrFailed()
+        inputs:
+          testResultsFormat: "JUnit"
+          testResultsFiles: "$(downloadDirectory)/Reports/*_JUnitReport.xml"
+          testRunTitle: "Postman Tests"
