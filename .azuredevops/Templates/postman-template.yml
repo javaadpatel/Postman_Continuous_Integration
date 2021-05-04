@@ -38,7 +38,7 @@ jobs:
       - task: PowerShell@2
         displayName: Execute Postman Collections
         inputs:
-          filePath: "./azuredevops/Templates/Scripts/newman-collection-runner.ps1"
+          filePath: "./.azuredevops/Templates/Scripts/newman-collection-runner.ps1"
           arguments: >
             -PostmanApiKey ${{parameters.postmanApiKey}}
             -PostmanSettingsFilePath "$(System.DefaultWorkingDirectory)/.azuredevops/Configuration/${{lower(parameters.environment)}}.postman_settings.json"
